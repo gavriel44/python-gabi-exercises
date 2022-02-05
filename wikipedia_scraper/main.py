@@ -55,4 +55,5 @@ def scrape_wikipedia_images(article_name: str):
 
 
 if __name__ == '__main__':
-    scrape_wikipedia_images("jesus")
+    article = input("enter article name: ")
+    scrape_wikipedia_images(article)

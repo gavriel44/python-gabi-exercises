@@ -27,12 +27,10 @@ def modulate(message: str):
             amplitude = 6
             # print(type(bit))
             if bit == "1":
-                bit_y = [amplitude * sin(f*i) for i in bit_x]
-                y_final.extend(bit_y)
-            else:
                 amplitude = 2
-                bit_y = [amplitude * sin(f*i) for i in bit_x]
-                y_final.extend(bit_y)
+            
+            bit_y = [amplitude * sin(f*i) for i in bit_x]
+            y_final.extend(bit_y)
 
     x_final = [i * pi/180 for i in range(361 * cycles)]
     return x_final, y_final
@@ -47,7 +45,7 @@ def demodulate(wave_y):
 def get_bit_str_from_wave_y(wave_y):
     bit_string = ''
     for i in range(90, len(wave_y), 361):
-        if wave_y[i] < -3:
+        if wave_y[i] > -3:
             bit_string = bit_string + "1"
         else:
             bit_string = bit_string + "0"
